@@ -1,4 +1,4 @@
-function [H,AT,AR] = channel_generation(N_t,N_r,N_c,N_ray)
+function [H,AT,AR] = MIMO_Channel(N_t,N_r,N_c,N_ray)
 
 %input: the numbers of transmit antennas and receive antennas
 %output: the realized channel, codebook for vrf and wrf of OMP method 
@@ -7,7 +7,7 @@ function [H,AT,AR] = channel_generation(N_t,N_r,N_c,N_ray)
 
 E_aoa = 2*pi* rand(N_c,1);                                % The mean value of the cluster, obey the uniform distribution of (0,2*pi)
 
-sigma_aoa = 5*pi/180;                                    % The angle is expanded to 5¡ã, converted to radians, which is the standard deviation
+sigma_aoa = 5*pi/180;                                    % The angle is expanded to 5Â¡Ã£, converted to radians, which is the standard deviation
 b = sigma_aoa/sqrt(2);                                    % Find the corresponding b according to the standard deviation, the scale parameter
 a = rand(N_c,N_ray)-0.5;                                  % Generate a uniformly distributed random number sequence in the interval (-0.5, 0.5);
 aoa = repmat(E_aoa,1,N_ray)-b*sign(a).*log(1-2*abs(a));   % Generate a random number sequence that conforms to the Laplace distribution 
@@ -17,7 +17,7 @@ aoa = sin(aoa);
 %AOD
 
 E_aod = 2*pi* rand(N_c, 1);                               %The mean value of the cluster, obey the uniform distribution of (0,2*pi)
-sigma_aod = 5*pi/180;                                    %The angle is expanded to 5¡ã, converted to radians, which is the standard deviation
+sigma_aod = 5*pi/180;                                    %The angle is expanded to 5Â¡Ã£, converted to radians, which is the standard deviation
 b = sigma_aod/sqrt(2);                                    % Find the corresponding b according to the standard deviation, the scale parameter
 a = rand(N_c,N_ray)-0.5;                                  %Generate a uniformly distributed random number sequence in the interval (-0.5, 0.5);
 aod = repmat(E_aod,1, N_ray)-b*sign(a).*log(1-2*abs(a));   %Generate a random number column conforming to the Laplace distribution 
