@@ -39,7 +39,7 @@ for m = 1:Nsnr
     snr = db2pow(snr_param(m));
     for n = 1:Niter
         % Channel realization
-        [H,At,Ar] = channel_generation(Nt,Nr,Ncl,Nray);
+        [H,At,Ar] = MIMO_Channel(Nt,Nr,Ncl,Nray);
         
         for k = 1:NNs
             Ns = Ns_param(k);
